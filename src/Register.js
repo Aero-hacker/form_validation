@@ -92,30 +92,61 @@ const Register = () => {
             </p>
 
             <label htmlFor="password">
-                            Password:
-                            
-                            <FontAwesomeIcon icon={faCheck} className={validpwd ? "valid" : "hide"} />
-                            <FontAwesomeIcon icon={faTimes} className={validpwd || !pwd ? "hide" : "invalid"} />
-                        </label>
-                        <input
-                            type="password"
-                            id="password"
-                            onChange={(e) => setPwd(e.target.value)}
-                            value={pwd}
-                            required
-                            aria-invalid={validpwd ? "false" : "true"}
-                            aria-describedby="pwdnote"
-                            onFocus={() => setPwdfocus(true)}
-                            onBlur={() => setPwdfocus(false)}
-                        />
-                        <p id="pwdnote" className={pwdfocus && !validpwd ? "instructions" : "offscreen"}>
-                            <FontAwesomeIcon icon={faInfoCircle} />
-                            8 to 24 characters.<br />
-                            Must include uppercase and lowercase letters, a number and a special character.<br />
-                            Allowed special characters: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
-                        </p>
+                Password:
+                
+                <FontAwesomeIcon icon={faCheck} className={validpwd ? "valid" : "hide"} />
+                <FontAwesomeIcon icon={faTimes} className={validpwd || !pwd ? "hide" : "invalid"} />
+            </label>
+            <input
+                type="password"
+                id="password"
+                onChange={(e) => setPwd(e.target.value)}
+                value={pwd}
+                required
+                aria-invalid={validpwd ? "false" : "true"}
+                aria-describedby="pwdnote"
+                onFocus={() => setPwdfocus(true)}
+                onBlur={() => setPwdfocus(false)}
+            />
+            <p id="pwdnote" className={pwdfocus && !validpwd ? "instructions" : "offscreen"}>
+                <FontAwesomeIcon icon={faInfoCircle} />
+                8 to 24 characters.<br />
+                Must include uppercase and lowercase letters, a number and a special character.<br />
+                Allowed special characters: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
+            </p>
+             
+            <label htmlFor="confirm_pwd">
+                    Confirm Password:
+                    <FontAwesomeIcon icon={faCheck} className={validmatch && matchpwd ? "valid" : "hide"} />
+                    <FontAwesomeIcon icon={faTimes} className={validmatch || !matchpwd ? "hide" : "invalid"} />
+                </label>
+                <input
+                    type="password"
+                    id="confirm_pwd"
+                    onChange={(e) => setMatchpwd(e.target.value)}
+                    value={matchpwd}
+                    required
+                    aria-invalid={validmatch ? "false" : "true"}
+                    aria-describedby="confirmnote"
+                    onFocus={() => setMatchfocus(true)}
+                    onBlur={() => setMatchfocus(false)}
+                />
+                <p id="confirmnote" className={matchfocus && !validmatch ? "instructions" : "offscreen"}>
+                    <FontAwesomeIcon icon={faInfoCircle} />
+                    Must match the first password input field.
+                </p>
+
+                <button disabled={!validname || !validpwd || !validmatch ? true : false}>Sign Up</button>
+            
 
           </form>
+          <p>
+                        Already registered?<br />
+                        <span className="line">
+                            {/*put router link here*/}
+                            <a href="#">Sign In</a>
+                        </span>
+                    </p>
 
     </section>
   )
